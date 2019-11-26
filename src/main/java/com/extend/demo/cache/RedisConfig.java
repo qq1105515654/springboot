@@ -16,6 +16,7 @@ import org.springframework.data.redis.connection.jedis.JedisConnectionFactory;
 import org.springframework.data.redis.serializer.GenericJackson2JsonRedisSerializer;
 import org.springframework.data.redis.serializer.Jackson2JsonRedisSerializer;
 import org.springframework.data.redis.serializer.StringRedisSerializer;
+import redis.clients.jedis.JedisSentinelPool;
 
 import java.time.Duration;
 
@@ -61,33 +62,32 @@ public class RedisConfig {
 
 
     @Bean
-    public JedisConnectionFactory jedisConnectionFactory(){
-        RedisStandaloneConfiguration  redisStandaloneConfiguration=new RedisStandaloneConfiguration();
+    public JedisConnectionFactory jedisConnectionFactory() {
+        RedisStandaloneConfiguration redisStandaloneConfiguration = new RedisStandaloneConfiguration();
         redisStandaloneConfiguration.setHostName(host);
         redisStandaloneConfiguration.setPort(port);
         redisStandaloneConfiguration.setPassword(RedisPassword.of(password));
-        JedisClientConfiguration.JedisClientConfigurationBuilder builder=JedisClientConfiguration.builder();
+        JedisClientConfiguration.JedisClientConfigurationBuilder builder = JedisClientConfiguration.builder();
         builder.connectTimeout(Duration.ofMillis(timeOut));
-        JedisConnectionFactory jedisConnectionFactory=new JedisConnectionFactory(redisStandaloneConfiguration,builder.build());
+        JedisConnectionFactory jedisConnectionFactory = new JedisConnectionFactory(redisStandaloneConfiguration, builder.build());
         return jedisConnectionFactory;
     }
 
     @Bean
-    public RedisTemplate redisTemplate(RedisConnectionFactory redisConnectionFactory){
-        RedisTemplate redisTemplate=new RedisTemplate();
-        initRedisTemplate(redisTemplate,redisConnectionFactory);
+    public RedisTemplate redisTemplate(RedisConnectionFactory redisConnectionFactory) {
+        RedisTemplate redisTemplate = new RedisTemplate();
+        initRedisTemplate(redisTemplate, redisConnectionFactory);
         return redisTemplate;
     }
 
     @Bean
-    public RedisUtils redisUtils(RedisTemplate redisTemplate){
+    public RedisUtils redisUtils(RedisTemplate redisTemplate) {
         return new RedisUtils(redisTemplate);
     }
 
-    public void initRedisTemplate(RedisTemplate redisTemplate,RedisConnectionFactory factory){
-
-        Jackson2JsonRedisSerializer<Object> serializer=new Jackson2JsonRedisSerializer<Object>(Object.class);
-        ObjectMapper mapper=new ObjectMapper();
+    public void initRedisTemplate(RedisTemplate redisTemplate, RedisConnectionFactory factory) {
+        Jackson2JsonRedisSerializer<Object> serializer = new Jackson2JsonRedisSerializer<Object>(Object.class);
+        ObjectMapper mapper = new ObjectMapper();
         mapper.setVisibility(PropertyAccessor.ALL, JsonAutoDetect.Visibility.ANY);
         mapper.enableDefaultTyping(ObjectMapper.DefaultTyping.NON_FINAL);
         serializer.setObjectMapper(mapper);

@@ -33,7 +33,7 @@ public class UserLoginController {
     private HelloMessage message;
 
     @RequestMapping("/index")
-    public String index(HttpServletRequest request){
+    public String index(HttpServletRequest request) {
         message.fanoutSend();
         message.sendHello();
         message.topicASend();
@@ -44,15 +44,15 @@ public class UserLoginController {
 
     @ResponseBody
     @RequestMapping("/login")
-    public Object login(User user, HttpServletRequest request){
+    public Object login(User user, HttpServletRequest request) {
 
-        try{
-           // redisUtils.set(user.getUserName(),user, RedisConstants.database1);
-            User user1= (User) redisUtils.get(user.getUserName(),RedisConstants.database1);
+        try {
+            // redisUtils.set(user.getUserName(),user, RedisConstants.database1);
+            User user1 = (User) redisUtils.get(user.getUserName(), RedisConstants.database1);
 
             System.out.println(user1);
             return "缓存设置成功";
-        }catch (Exception e){
+        } catch (Exception e) {
             e.printStackTrace();
             return "缓存设置失败";
         }

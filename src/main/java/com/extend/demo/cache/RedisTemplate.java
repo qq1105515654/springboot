@@ -5,7 +5,7 @@ import org.springframework.data.redis.connection.jedis.JedisConnection;
 
 public class RedisTemplate extends org.springframework.data.redis.core.RedisTemplate {
 
-    public static ThreadLocal<Integer> indexdb=new ThreadLocal<Integer>(){
+    public static ThreadLocal<Integer> indexdb = new ThreadLocal<Integer>() {
         @Override
         protected Integer initialValue() {
             return 0;
@@ -27,7 +27,7 @@ public class RedisTemplate extends org.springframework.data.redis.core.RedisTemp
             } else {
                 connection.select(0);
             }
-        }finally {
+        } finally {
             indexdb.remove();
         }
         return super.preProcessConnection(connection, existingConnection);

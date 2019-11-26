@@ -34,14 +34,15 @@ public class CacheConfig extends CachingConfigurerSupport {
     }*/
 
     @Bean
-    public Jedis jedis(){
-        Jedis jedis=new Jedis(host,port);
+    public Jedis jedis() {
+        Jedis jedis = new Jedis(host, port);
         jedis.auth(passphrase);
         return jedis;
     }
 
     /**
      * redisTemplate 相关配置
+     *
      * @param
      * @return
      */
@@ -67,24 +68,23 @@ public class CacheConfig extends CachingConfigurerSupport {
         redisTemplate.afterPropertiesSet();
         return redisTemplate;
     }*/
-
     @Bean
-    public HashOperations<String,String,Object> hashOperations(RedisTemplate redisTemplate){
+    public HashOperations<String, String, Object> hashOperations(RedisTemplate redisTemplate) {
         return redisTemplate.opsForHash();
     }
 
     @Bean
-    public ValueOperations<String,Object> valueOperations(RedisTemplate redisTemplate){
+    public ValueOperations<String, Object> valueOperations(RedisTemplate redisTemplate) {
         return redisTemplate.opsForValue();
     }
 
     @Bean
-    public SetOperations<String,Object> setOperations(RedisTemplate redisTemplate){
+    public SetOperations<String, Object> setOperations(RedisTemplate redisTemplate) {
         return redisTemplate.opsForSet();
     }
 
     @Bean
-    public ListOperations<String,Object> listOperations(RedisTemplate redisTemplate){
+    public ListOperations<String, Object> listOperations(RedisTemplate redisTemplate) {
         return redisTemplate.opsForList();
     }
 

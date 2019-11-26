@@ -28,7 +28,7 @@ public class UserManagerImpl implements UserManager {
 
 
     @Override
-    public UserLogin queryUserByUserNameAndPassword(User user,String accessToken){
+    public UserLogin queryUserByUserNameAndPassword(User user, String accessToken) {
        /* jedis.connect();
 
         User findUser;
@@ -53,7 +53,7 @@ public class UserManagerImpl implements UserManager {
             }
         }
         return userLogin;*/
-       return null;
+        return null;
     }
 
 }

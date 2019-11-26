@@ -14,7 +14,7 @@ public class FanoutAConsumer {
     private AmqpTemplate rabbitTemplate;
 
     @RabbitHandler
-    public void recieved(String msg){
-        System.out.println("Start===============接收到 fanout.a 消息："+msg+"===============End");
+    public void recieved(String msg) {
+        System.out.println("Start===============接收到 fanout.a 消息：" + msg + "===============End");
     }
 }

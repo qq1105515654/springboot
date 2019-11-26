@@ -14,6 +14,9 @@ spring:
       password: admin123
       host: 47.106.77.86
       port: 27017
+    elasticsearch:
+      cluster-name: test-elasticsearch
+      cluster-nodes: 47.106.77.86:9300
   datasource:
     driver-class-name: com.mysql.jdbc.Driver
     username: canal
@@ -35,10 +38,11 @@ spring:
     restart:
       enabled: true
   rabbitmq:
-    host: 47.106.77.86
+    host: 192.168.1.202
     port: 5672
-    username: admin
-    password: admin
+    username: superadmin
+    password: superadmin
+    virtual-host: /test01
 mybatis:
   config-location: classpath:/mybatis/mybatis-config.xml
   mapper-locations: classpath:/mapper/**/**.xml

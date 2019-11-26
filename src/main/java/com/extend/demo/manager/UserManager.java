@@ -7,6 +7,6 @@ import java.io.IOException;
 
 public interface UserManager {
 
-    public UserLogin queryUserByUserNameAndPassword(User user,String accessToken);
+    public UserLogin queryUserByUserNameAndPassword(User user, String accessToken);
 
 }
