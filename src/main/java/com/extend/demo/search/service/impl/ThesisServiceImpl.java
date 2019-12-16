@@ -67,9 +67,9 @@ public class ThesisServiceImpl implements ThesisService {
     public AggregatedPageImpl<Thesis> query(String keyword){
         Pageable pageable=PageRequest.of(0,10);
         SearchQuery searchQuery=new NativeSearchQueryBuilder().
-                withQuery(QueryBuilders.multiMatchQuery(keyword,"thesisTitle","author","organizations","thesisTag")).
+                withQuery(QueryBuilders.multiMatchQuery(keyword,"title","author","organizations","thesisTag")).
                 withHighlightFields(new HighlightBuilder.Field[]{
-                        new HighlightBuilder.Field("thesisTitle").preTags("<font color='#dd4b39'>").postTags("</font>"),
+                        new HighlightBuilder.Field("title").preTags("<font color='#dd4b39'>").postTags("</font>"),
                         new HighlightBuilder.Field("author").preTags("<font color='#dd4b39'>").postTags("</font>"),
                         new HighlightBuilder.Field("organizations").preTags("<font color='#dd4b39'>").postTags("</font>"),
                         new HighlightBuilder.Field("thesisTag").preTags("<font color='#dd4b39'>").postTags("</font>")}).build();
@@ -110,7 +110,7 @@ public class ThesisServiceImpl implements ThesisService {
 
     @Override
     public Iterable<Thesis> getTopByClickRate() {
-        return thesisRepository.getTopByClickRate();
+        return thesisRepository.queryAllByHitsOrderByHitsDesc();
     }
 
 }

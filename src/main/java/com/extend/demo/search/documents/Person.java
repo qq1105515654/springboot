@@ -1,3 +1,4 @@
+/*
 package com.extend.demo.search.documents;
 
 import lombok.Data;
@@ -9,13 +10,15 @@ import org.springframework.data.elasticsearch.annotations.Field;
 import java.io.Serializable;
 import java.util.List;
 
+*/
 /**
  * @ClassName Person
  * @Description TODO
  * @Author snh
  * @Date 2019/9/6 8:48
  * @Version 1.0
- **/
+ **//*
+
 @Document(indexName = "dongbawen" , type = "health")
 @Data
 public class Person implements Serializable {
@@ -34,3 +37,4 @@ public class Person implements Serializable {
     private List<String> interests;
 
 }
+*/

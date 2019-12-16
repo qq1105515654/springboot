@@ -1,3 +1,4 @@
+/*
 package com.extend.demo.search.service.impl;
 
 import com.extend.demo.search.documents.Person;
@@ -15,13 +16,15 @@ import org.springframework.stereotype.Service;
 import java.util.ArrayList;
 import java.util.List;
 
+*/
 /**
  * @ClassName PersonServiceImpl
  * @Description TODO
  * @Author snh
  * @Date 2019/9/6 14:53
  * @Version 1.0
- **/
+ **//*
+
 @Service
 public class PersonServiceImpl implements PersonService {
 
@@ -52,3 +55,4 @@ public class PersonServiceImpl implements PersonService {
 
 
 }
+*/

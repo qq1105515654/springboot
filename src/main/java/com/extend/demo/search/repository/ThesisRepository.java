@@ -15,18 +15,6 @@ import java.util.List;
  **/
 public interface ThesisRepository extends ElasticsearchRepository<Thesis,String> {
 
-
-    /**
-     * 根据点击量获取排名
-     * @return
-     */
-    Iterable<Thesis> getTopByClickRate();
-
-    /**
-     * 根据时间排序
-     * @return
-     */
-    Iterable<Thesis> getAllOrderByIssue();
-
+    List<Thesis> queryAllByHitsOrderByHitsDesc();
 
 }
